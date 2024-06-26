@@ -29,7 +29,6 @@ HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 
 class TestAccountService(TestCase):
     """Account Service Tests"""
-
     @classmethod
     def setUpClass(cls):
         """Run once before all tests"""
@@ -197,5 +196,6 @@ class TestAccountService(TestCase):
         """It should return a CORS header"""
         resp = self.client.get('/', environ_overrides=HTTPS_ENVIRON)
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
+
         # Checks for the CORS header
         self.assertEqual(resp.headers.get('Access-Control-Allow-Origin'), '*')
